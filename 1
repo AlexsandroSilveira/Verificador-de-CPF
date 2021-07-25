@@ -1,0 +1,43 @@
+while True:
+    cpf = list(input('Digite seu CPF:' ))
+
+    cpf_int = []
+    for i in cpf:
+        cpf_int.append(int(i))
+
+    novo_cpf = cpf_int[:-2]
+
+    contador = 10
+    m: list[int] = []
+    for n in novo_cpf:
+        y = n*contador
+        m.append(int(y))
+        contador -= 1
+
+    soma_m = sum(m)
+    digito_1 = 11 - (soma_m % 11)
+
+    if digito_1 > 9:
+        digito_1 = 0
+
+    novo_cpf.append(int(digito_1))
+
+    contador = 11
+    l: list[int] = []
+    for n in novo_cpf:
+        y = n*contador
+        l.append(int(y))
+        contador -= 1
+
+    soma_l = sum(l)
+    digito_2 = 11 - (soma_l % 11)
+
+    if digito_2 > 9:
+        digito_2 = 0
+
+    novo_cpf.append(int(digito_2))
+
+    if cpf_int == novo_cpf:
+        print('CPF válido')
+    else:
+        print('CPF inválido')
